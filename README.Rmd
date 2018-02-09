@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 So I've been wanting to try out Josiah's [geniusR package](https://github.com/JosiahParry/geniusR) for a while, and I hadn't found a good occasion to use it.
 
-Until yesterday, when Kendrick Lamar released [his album](https://open.spotify.com/album/5sOSzueqgCiVpXNcpd6QpL) for the upcoming movie *Black Panther*. Apparently he was asked to only record a few songs for it, but he ended up producing the entire album. I'm for it.
+Until yesterday, when Kendrick Lamar released [the soundtrack](https://open.spotify.com/album/5sOSzueqgCiVpXNcpd6QpL) for the upcoming movie *Black Panther*. Apparently he was asked to only record a few songs for it, but he ended up producing the entire album. I'm for it.
 
 In the spirit of the original inspiration for the geniusR package, the release of Kendrick Lamar's album **DAMN.**, here goes a try with *Black Panther*. 
 
