@@ -1,0 +1,69 @@
+---
+title: "Black Panther: Kendrick + Friends"
+author: "Angela Li"
+date: "February 9, 2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+So I've been wanting to try out Josiah Parry's geniusR package for a while, and I hadn't found a good occasion to use it.
+
+Until today, when Kendrick Lamar released [his album](https://open.spotify.com/album/5sOSzueqgCiVpXNcpd6QpL) for the upcoming movie *Black Panther*. Apparently he was asked to only record a few songs for it, but he ended up producing the entire album. I'm for it.
+
+In the spirit of the original inspiration for the geniusR package, the release of Kendrick Lamar's album **DAMN.**, here goes a try with *Black Panther*. 
+
+```{r load, results='hide', message=FALSE, warning=FALSE}
+# Load libraries
+library(geniusR)
+library(tidyverse)
+library(tidytext)
+```
+
+Let's get some lyrics!
+
+```{r lyrics}
+bp_song <- genius_lyrics(artist = "Kendrick Lamar", song = "Black Panther")
+
+bp_song %>% 
+  mutate(line = row_number())
+```
+
+Time for a tracklist!
+
+```{r eval = FALSE}
+bp_tracks <- genius_tracklist(artist = "Kendrick Lamar", album = "Black Panther")
+```
+
+So putting `artist` = `"Kendrick Lamar"` and `album` = `"Black Panther"` doesn't actually work, because Kendrick worked with a few other folks on this album, including The Weeknd and SZA, to name a few stars.
+
+To make this work, what we want to do is look up the album on Genius and basically take the URL without dashes. The only reason I know this is because I may have been the one to suggest this feature.
+
+```{r}
+(bp_tracks <- genius_tracklist(artist = "Kendrick Lamar The Weeknd And Sza", album = "Black Panther The Album Music From And Inspired By"))
+```
+Sweet.
+
+This is sort of a pain to type, so I'll store the strings instead.
+
+```{r}
+kendrick <- "Kendrick Lamar The Weeknd And Sza"
+bp <- "Black Panther The Album Music From And Inspired By"
+
+(bp_tracks <- genius_tracklist(artist = kendrick, album = bp))
+```
+
+
+```{r, eval = FALSE}
+(bp_album <- genius_album(artist = kendrick, album = bp, nested = FALSE))
+```
+
+**Why doesn't this work???**
+
+Oh, it's because each of the tracks has different artists. Aah, my suggestion of using the URL only works if each of the songs on the album is by the same person.
+
+I think what we need to do is use rvest to actually scrape URLs from the page, instead of hacking together a URL that works 95% of the time. 
+
+Guess this doesn't work for compilations. Time to submit an issue.
