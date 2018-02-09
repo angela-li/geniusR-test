@@ -9,7 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-So I've been wanting to try out Josiah Parry's geniusR package for a while, and I hadn't found a good occasion to use it.
+So I've been wanting to try out Josiah's [geniusR package](https://github.com/JosiahParry/geniusR) for a while, and I hadn't found a good occasion to use it.
 
 Until today, when Kendrick Lamar released [his album](https://open.spotify.com/album/5sOSzueqgCiVpXNcpd6QpL) for the upcoming movie *Black Panther*. Apparently he was asked to only record a few songs for it, but he ended up producing the entire album. I'm for it.
 
